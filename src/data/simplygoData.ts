@@ -91,42 +91,62 @@ export interface FaqItem {
   category: string;
 }
 
+export interface CardCharmDesign {
+  id: string;
+  name: string;
+  type: 'Transit Card' | 'Transit Charm';
+  releaseLabel: string;
+  price: string;
+  storedValueIncluded: string;
+  tagline: string;
+  description: string;
+  palette: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    text: 'light' | 'dark';
+  };
+  motif: 'hexagon' | 'triangle' | 'circle' | 'horizon' | 'canopy' | 'express';
+  whereToBuy: string;
+  simplygoEnabled: boolean;
+}
+
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 'unified-app',
     eyebrow: 'Enhanced SimplyGo App',
-    headline: 'One unified platform for every public transport journey.',
+    headline: 'Manage every bus & MRT journey in one app.',
     summary:
-      'Manage SimplyGo EZ-Link cards, Concession cards, contactless bank cards, and EZ-Link Motoring in one place—check balances, top up remotely, and track fares instantly.',
-    ctaLabel: 'Explore Travel Tools',
-    ctaTarget: '#travel-tools',
+      'Top up remotely, track fares, block lost cards, and apply for concession passes—EZ-Link and TransitLink are now unified in SimplyGo.',
+    ctaLabel: 'Explore App & Download',
+    ctaTarget: '#simplygo-app',
     image: '/src/assets/images/hero_mrt_commuter_1795678195800.jpg',
     imageAlt: 'Commuters tapping transit cards at a bright Singapore MRT station platform',
-    accentLabel: 'EZ-Link & TransitLink services now integrated',
+    accentLabel: 'All-in-One Platform',
+  },
+  {
+    id: 'latest-charms',
+    eyebrow: 'New Releases',
+    headline: 'Discover the latest SimplyGo cards & charms.',
+    summary:
+      'Browse collectible geometric transit charms and limited-edition SimplyGo EZ-Link cards—ready for instant mobile top-ups.',
+    ctaLabel: 'Browse Latest Designs',
+    ctaTarget: '#cards-charms',
+    image: '/src/assets/images/card_ezlink_charms_1795678194764.jpg',
+    imageAlt: 'Minimalist SimplyGo transit cards and geometric keychains',
+    accentLabel: '2026 Collection',
   },
   {
     id: 'tap-contactless',
     eyebrow: 'Account-Based Ticketing',
-    headline: 'Tap directly with your contactless bank card or mobile wallet.',
+    headline: 'Tap directly with bank cards or mobile wallets.',
     summary:
-      'Skip card top-ups altogether. Board any MRT, LRT, or public bus with Mastercard, Visa, NETS Contactless, Apple Pay, or Google Pay and view trip charges in the app.',
-    ctaLabel: 'View Supported Cards',
+      'Board any MRT, LRT, or bus with Mastercard, Visa, NETS Contactless, Apple Pay, or Google Pay with zero top-ups needed.',
+    ctaLabel: 'View Payment Modes',
     ctaTarget: '#products',
     image: '/src/assets/images/card_bank_tap_1795678195256.jpg',
     imageAlt: 'Commuter tapping smartphone over a contactless bus fare reader',
-    accentLabel: 'Zero top-ups required for bank card commuters',
-  },
-  {
-    id: 'ride-rewards',
-    eyebrow: 'SimplyGo Rewards & Charms',
-    headline: 'Earn points on daily rides and collect limited-edition charms.',
-    summary:
-      'Link your SimplyGo EZ-Link card or wallet to unlock Ride to Rewards perks, offset fares with e-vouchers, and discover compact tap-and-go transit charms.',
-    ctaLabel: 'Browse Latest Campaigns',
-    ctaTarget: '#newsroom',
-    image: '/src/assets/images/campaign_rewards_city_1795678195454.jpg',
-    imageAlt: 'Singapore Marina Bay waterfront illuminated at twilight',
-    accentLabel: 'Available islandwide across MRT stations and buses',
+    accentLabel: 'Zero Top-Ups Needed',
   },
 ];
 
@@ -560,3 +580,97 @@ export const FAQ_ITEMS: FaqItem[] = [
       'In the SimplyGo App, navigate to your transaction history, select the affected journey, and tap "Submit Fare Claim" within 30 days of the trip. Approved adjustments are credited directly back to your card or bank account.',
   },
 ];
+
+export const LATEST_CARDS_AND_CHARMS: CardCharmDesign[] = [
+  {
+    id: 'charm-geo-hex',
+    name: 'Heritage Hexagon Transit Charm',
+    type: 'Transit Charm',
+    releaseLabel: 'Nov 2026 Drop',
+    price: 'S$19.90',
+    storedValueIncluded: 'No stored value (top up via SimplyGo App)',
+    tagline: 'Matte navy resin keychain with coral contactless core',
+    description:
+      'Clip directly onto bags, keys, or lanyards for effortless tap-and-go MRT and bus boarding. Pre-enabled with a 16-digit CAN ID for remote PayNow top-ups and lost-charm blocking.',
+    palette: { primary: '#0F1F3D', secondary: '#1E3A5F', accent: '#E40046', text: 'light' },
+    motif: 'hexagon',
+    whereToBuy: 'Dhoby Ghaut, Orchard & Tampines SimplyGo Vending Machines',
+    simplygoEnabled: true,
+  },
+  {
+    id: 'card-marina-horizon',
+    name: 'Marina Horizon SimplyGo EZ-Link',
+    type: 'Transit Card',
+    releaseLabel: 'Nov 2026 Edition',
+    price: 'S$10.00',
+    storedValueIncluded: 'Includes S$5.00 stored value',
+    tagline: 'Architectural crimson & deep slate commuter card',
+    description:
+      'Singapore’s flagship SimplyGo EZ-Link card featuring high-durability matte finish, instant app pairing, and Ride to Rewards eligibility across buses, trains, and 30,000+ retail points.',
+    palette: { primary: '#E40046', secondary: '#9F1239', accent: '#38BDF8', text: 'light' },
+    motif: 'horizon',
+    whereToBuy: 'All SimplyGo Ticket Offices, 7-Eleven & Cheers',
+    simplygoEnabled: true,
+  },
+  {
+    id: 'charm-coral-triangle',
+    name: 'Civic Delta Compact Charm',
+    type: 'Transit Charm',
+    releaseLabel: 'Oct 2026 Drop',
+    price: 'S$18.90',
+    storedValueIncluded: 'No stored value (top up via SimplyGo App)',
+    tagline: 'Bright coral geometric tag with steel split-ring',
+    description:
+      'Ultra-lightweight triangular transit charm engineered for quick single-handed taps at fare gantries. Supports Auto Top-Up and instant fare notifications.',
+    palette: { primary: '#F43F5E', secondary: '#E11D48', accent: '#0F172A', text: 'light' },
+    motif: 'triangle',
+    whereToBuy: 'Jurong East, Serangoon & Bugis SimplyGo Kiosks',
+    simplygoEnabled: true,
+  },
+  {
+    id: 'card-botanic-canopy',
+    name: 'Botanic Canopy SimplyGo Card',
+    type: 'Transit Card',
+    releaseLabel: 'Oct 2026 Edition',
+    price: 'S$12.00',
+    storedValueIncluded: 'Includes S$5.00 stored value',
+    tagline: 'Botanical emerald & limestone greenway edition',
+    description:
+      'Inspired by Singapore’s Rail Corridor and Garden City stations. Pair your 16-digit CAN in the SimplyGo App to monitor family commutes and redeem e-vouchers.',
+    palette: { primary: '#065F46', secondary: '#047857', accent: '#FBBF24', text: 'light' },
+    motif: 'canopy',
+    whereToBuy: 'Botanic Gardens, City Hall & SimplyGo Official Store',
+    simplygoEnabled: true,
+  },
+  {
+    id: 'charm-orbit-disc',
+    name: 'Metro Orbit Round Charm',
+    type: 'Transit Charm',
+    releaseLabel: 'Limited Batch',
+    price: 'S$19.90',
+    storedValueIncluded: 'No stored value (top up via SimplyGo App)',
+    tagline: 'Midnight slate medallion with cyan wave indicator',
+    description:
+      'Minimalist circular tap-and-go charm crafted from scratch-resistant polymer. Works seamlessly across all MRT lines, LRT, public buses, and EPS carparks.',
+    palette: { primary: '#1E293B', secondary: '#0F172A', accent: '#38BDF8', text: 'light' },
+    motif: 'circle',
+    whereToBuy: 'Woodlands, Raffles Place & Online Official Store',
+    simplygoEnabled: true,
+  },
+  {
+    id: 'card-express-cobalt',
+    name: 'SimplyGo Express Cobalt Card',
+    type: 'Transit Card',
+    releaseLabel: 'Core Series',
+    price: 'S$10.00',
+    storedValueIncluded: 'Includes S$5.00 stored value',
+    tagline: 'Clean cobalt transit card with high-contrast wave mark',
+    description:
+      'Everyday SimplyGo EZ-Link card ready out-of-the-box for remote top-ups, Auto Top-Up mandates, and instant balance protection if misplaced.',
+    palette: { primary: '#0077B6', secondary: '#023E8A', accent: '#FFFFFF', text: 'light' },
+    motif: 'express',
+    whereToBuy: 'All MRT Passenger Service Centres & Convenience Stores',
+    simplygoEnabled: true,
+  },
+];
+

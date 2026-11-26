@@ -17,11 +17,15 @@ import {
   MRT_STATIONS,
 } from '../data/simplygoData';
 
-type ToolTab = 'fare' | 'card' | 'concession';
+export type ToolTab = 'fare' | 'card' | 'concession';
 type CommuterType = 'adult' | 'student' | 'senior' | 'workfare';
 
-export function TravelToolsSection() {
-  const [activeTab, setActiveTab] = useState<ToolTab>('fare');
+interface TravelToolsSectionProps {
+  activeTab: ToolTab;
+  onTabChange: (tab: ToolTab) => void;
+}
+
+export function TravelToolsSection({ activeTab, onTabChange }: TravelToolsSectionProps) {
 
   // Fare Calculator state
   const [originId, setOriginId] = useState('clementi');
@@ -208,7 +212,7 @@ export function TravelToolsSection() {
               type="button"
               role="tab"
               aria-selected={activeTab === 'fare'}
-              onClick={() => setActiveTab('fare')}
+              onClick={() => onTabChange('fare')}
               className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 activeTab === 'fare'
                   ? 'bg-white text-slate-900 shadow-sm'
@@ -222,7 +226,7 @@ export function TravelToolsSection() {
               type="button"
               role="tab"
               aria-selected={activeTab === 'card'}
-              onClick={() => setActiveTab('card')}
+              onClick={() => onTabChange('card')}
               className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 activeTab === 'card'
                   ? 'bg-white text-slate-900 shadow-sm'
@@ -236,7 +240,7 @@ export function TravelToolsSection() {
               type="button"
               role="tab"
               aria-selected={activeTab === 'concession'}
-              onClick={() => setActiveTab('concession')}
+              onClick={() => onTabChange('concession')}
               className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 activeTab === 'concession'
                   ? 'bg-white text-slate-900 shadow-sm'

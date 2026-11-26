@@ -4,6 +4,7 @@ import {
   Check,
   Gift,
   Lock,
+  QrCode,
   Smartphone,
   Wallet,
 } from 'lucide-react';
@@ -83,24 +84,25 @@ export function AppShowcaseSection({ onOpenDownloadModal }: AppShowcaseSectionPr
   return (
     <section
       id="simplygo-app"
-      className="py-16 lg:py-24 bg-[#0F1F3D] text-white border-b border-slate-800"
+      className="py-14 lg:py-20 bg-[#0F1F3D] text-white border-b border-slate-800"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left: Interactive Feature List */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* Left: What SimplyGo App is about + Key Features + Inline Download Box (no scroll-back needed) */}
           <div className="lg:col-span-7 space-y-6">
             <div>
               <p className="text-xs font-semibold tracking-wide text-rose-300">
-                All-in-One Mobile Experience
+                SimplyGo Mobile App · Unified Transit &amp; Wallet
               </p>
               <h2 className="mt-2 font-display text-2xl sm:text-4xl font-bold tracking-tight text-white text-balance">
-                The enhanced SimplyGo App replaces legacy web portals.
+                What SimplyGo App does—and download it in one step.
               </h2>
-              <p className="mt-3 text-base text-slate-300 leading-relaxed max-w-xl">
-                EZ-Link and TransitLink digital services are now consolidated into a single mobile app for commuters across Singapore.
+              <p className="mt-2.5 text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+                SimplyGo combines the former EZ-Link and TransitLink portals into one app. Check NFC balances, top up cards remotely, apply for concessions with Singpass, and earn ride rewards.
               </p>
             </div>
 
+            {/* Key App Features List */}
             <div className="space-y-2.5">
               {APP_FEATURES.map((feature) => {
                 const Icon = feature.icon;
@@ -138,26 +140,51 @@ export function AppShowcaseSection({ onOpenDownloadModal }: AppShowcaseSectionPr
               })}
             </div>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <button
-                type="button"
-                onClick={onOpenDownloadModal}
-                className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-[#E40046] hover:bg-[#C0003B] rounded-lg transition-colors cursor-pointer whitespace-nowrap"
-              >
-                <Smartphone className="w-4 h-4" />
-                <span>Download SimplyGo App</span>
-              </button>
-              <span className="text-xs text-slate-400">
-                Available on Apple App Store &amp; Google Play · Singpass Supported
-              </span>
+            {/* Combined "Download SimplyGo App" CTA Panel directly below Key Features */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.07] border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+              <div className="space-y-1">
+                <h3 className="font-display text-lg font-bold text-white">
+                  Download SimplyGo App
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300">
+                  Free on iOS &amp; Android · Sign in with Singpass or mobile number
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+                <button
+                  type="button"
+                  onClick={onOpenDownloadModal}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 rounded-lg transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  <Smartphone className="w-4 h-4" />
+                  <span>App Store</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={onOpenDownloadModal}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#E40046] hover:bg-[#C0003B] rounded-lg transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  <Smartphone className="w-4 h-4" />
+                  <span>Google Play</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={onOpenDownloadModal}
+                  aria-label="Show QR Code to Download SimplyGo App"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/15 rounded-lg transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  <QrCode className="w-4 h-4" />
+                  <span>Scan QR</span>
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Right: Interactive Mobile App Preview */}
-          <div className="lg:col-span-5 flex justify-center">
+          <div className="lg:col-span-5 flex justify-center lg:sticky lg:top-20">
             <div className="w-full max-w-[360px] rounded-[28px] bg-slate-950 p-3 border border-white/15 shadow-2xl">
               <div className="rounded-[22px] bg-white text-slate-900 overflow-hidden">
-                {/* Phone Top Bar */}
                 <div className="px-5 pt-5 pb-4 bg-[#E40046] text-white">
                   <div className="flex items-center justify-between text-xs text-rose-100">
                     <span>SimplyGo App</span>
@@ -171,7 +198,6 @@ export function AppShowcaseSection({ onOpenDownloadModal }: AppShowcaseSectionPr
                   </p>
                 </div>
 
-                {/* Screen Body */}
                 <div className="p-5 space-y-3 bg-slate-50 min-h-[290px]">
                   {activeFeature.screenRows.map((row) => (
                     <div
