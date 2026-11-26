@@ -1,0 +1,6 @@
+{
+  "name": "SimplyGo",
+  "description": "Singapore's unified public transport ticketing, travel cards, concession services, and transit fare platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
